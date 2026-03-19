@@ -34,9 +34,9 @@ public class Usuarios {
 	}
 	
 	
-	public Usuarios(int idUsuario, String nombreUsuario, String contrasenya) {
+	public Usuarios( String nombreUsuario, String contrasenya) {
 		super();
-		this.idUsuario = idUsuario;
+		this.idUsuario = crearIdCategoria();
 		this.nombreUsuario = nombreUsuario;
 		this.contrasenya = contrasenya;
 	}

@@ -34,9 +34,9 @@ public class Categorias {
 	}
 	
 	
-	public Categorias(int idCategoria, String nombreCategoria, ArrayList<Movimientos> listaMovimientos) {
+	public Categorias( String nombreCategoria, ArrayList<Movimientos> listaMovimientos) {
 		super();
-		this.idCategoria = idCategoria;
+		this.idCategoria = crearIdCategoria();
 		this.nombreCategoria = nombreCategoria;
 		this.listaMovimientos = listaMovimientos;
 	}
