@@ -53,7 +53,7 @@ public class Movimientos {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	private int getIdUsuarioFK() {
+	public int getIdUsuarioFK() {
 		return idUsuarioFK;
 	}
 	public void setIdUsuarioFK(int idUsuarioFK) {
@@ -72,7 +72,4 @@ public class Movimientos {
 		this.descripcion = descripcion;
 		this.idUsuarioFK = idUsuarioFK;
 	}
-	
-	
-
 }

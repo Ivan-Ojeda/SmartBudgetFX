@@ -1,18 +1,18 @@
 package entidades;
 
-import java.util.ArrayList;
-
 public class Categorias {
-	
-	/**
-	 * 
-	 * */
 	
 	private int idCategoria;
 	private String nombreCategoria;
-	private ArrayList<Movimientos> listaMovimientos;
+	private String tipoDeMovimientoParaLaCategoria;
 	 
-	 
+	
+	public String getTipoDeMovimientoParaLaCategoria() {
+		return tipoDeMovimientoParaLaCategoria;
+	}
+	public void setTipoDeMovimientoParaLaCategoria(String tipoDeMovimientoParaLaCategoria) {
+		this.tipoDeMovimientoParaLaCategoria = tipoDeMovimientoParaLaCategoria;
+	}
 	public int getIdCategoria() {
 		return idCategoria;
 	}
@@ -25,26 +25,17 @@ public class Categorias {
 	public void setNombreCategoria(String nombreCategoria) {
 		this.nombreCategoria = nombreCategoria;
 	}
-	public ArrayList<Movimientos> getListaMovimientos() {
-		return listaMovimientos;
-	}
-	public void setListaMovimientos(ArrayList<Movimientos> listaMovimientos) {
-		this.listaMovimientos = listaMovimientos;
-	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "Categorias [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + ", listaMovimientos="
-				+ listaMovimientos + "]";
+		return "Categorias [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
+				+ ", tipoDeMovimientoParaLaCategoria=" + tipoDeMovimientoParaLaCategoria + "]";
 	}
-	public Categorias(int idCategoria, String nombreCategoria, ArrayList<Movimientos> listaMovimientos) {
+
+	public Categorias(int idCategoria, String nombreCategoria, String tipoDeMovimientoParaLaCategoria) {
 		super();
 		this.idCategoria = idCategoria;
 		this.nombreCategoria = nombreCategoria;
-		this.listaMovimientos = listaMovimientos;
+		this.tipoDeMovimientoParaLaCategoria = tipoDeMovimientoParaLaCategoria;
 	}
-	
-	
-
 }
