@@ -33,6 +33,11 @@ public class Categorias {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Categorias [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + ", listaMovimientos="
+				+ listaMovimientos + "]";
+	}
 	public Categorias(int idCategoria, String nombreCategoria, ArrayList<Movimientos> listaMovimientos) {
 		super();
 		this.idCategoria = idCategoria;
