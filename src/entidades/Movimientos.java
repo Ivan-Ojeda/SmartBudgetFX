@@ -1,6 +1,8 @@
 package entidades;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Movimientos {
 	
@@ -61,10 +63,10 @@ public class Movimientos {
 	}
 	
 	
-	public Movimientos(int idMovimiento, double importe, String categoriaFK, String tipoDeMovimiento,
+	public Movimientos(double importe, String categoriaFK, String tipoDeMovimiento,
 			Date fechaMovimiento, String descripcion, int idUsuarioFK) {
 		super();
-		this.idMovimiento = idMovimiento;
+		this.idMovimiento = crearIdMovimiento();
 		this.importe = importe;
 		this.categoriaFK = categoriaFK;
 		this.tipoDeMovimiento = tipoDeMovimiento;
@@ -73,6 +75,39 @@ public class Movimientos {
 		this.idUsuarioFK = idUsuarioFK;
 	}
 	
+	public int crearIdMovimiento() {
+	    ArrayList<Movimientos> lmg = controladores.Inicio.listaGlobalMovimientos;
+
+	    // Si la lista está vacía --> devuelve 1
+	    if (lmg.isEmpty()) {
+	        return 1;
+	    }
+
+	    // Ordenar la lista por id (de menor a mayor)
+	    lmg.sort(Comparator.comparingInt(Movimientos::getIdMovimiento));
+
+	    int esperado = 1;
+
+	    for (Movimientos obj : lmg) {
+	        if (obj.getIdMovimiento() != esperado) {
+	            // Encontramos un hueco --> devolvemos ese ID
+	            return esperado;
+	        }
+	        esperado++;
+	    }
+
+	    // Si no hay huecos --> devolvemos el siguiente al último
+	    return esperado;
+	}
 	
+	
+	public String formatoObjetoFichero() {
+		String formatoFichero = this.idMovimiento + ";" + this.importe
+				+ ";" + this.categoriaFK + ";" + this.tipoDeMovimiento
+				+ ";" + fechaMovimiento + ";" + this.descripcion
+				+ ";" + this.idUsuarioFK;
+		
+		return formatoFichero;
+	}
 
 }
