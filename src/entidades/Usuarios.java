@@ -36,12 +36,12 @@ public class Usuarios {
 	
 	public Usuarios( String nombreUsuario, String contrasenya) {
 		super();
-		this.idUsuario = crearIdCategoria();
+		this.idUsuario = crearIdUsuario();
 		this.nombreUsuario = nombreUsuario;
 		this.contrasenya = contrasenya;
 	}
 	
-	public int crearIdCategoria() {
+	public int crearIdUsuario() {
 	    ArrayList<Usuarios> lug = controladores.Inicio.listaGlobalUsuarios;
 
 	    // Si la lista está vacía --> devuelve 1
