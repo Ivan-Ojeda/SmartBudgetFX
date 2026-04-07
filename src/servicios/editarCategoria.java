@@ -104,6 +104,7 @@ public class editarCategoria {
     /**
      * MÉTODOS DE APOYO (Para que el ejemplo funcione)
      */
+    
     private static void prepararDatosEjemplo() {
         try (PrintWriter pw = new PrintWriter(new FileWriter(FILE_NAME))) {
             // [DEPENDE DE COMPAÑEROS]: El orden id;nombre;tipo
