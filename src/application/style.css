@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+/* =========================================================
+   1. RESET GLOBAL Y VARIABLES
+========================================================= */
+.root {
+    /* Colores corporativos */
+    -fx-bg: #EDE8D0;
+    -fx-graphite: #4A4A4A;
+    -fx-arena: #C6A664;
+    -fx-shadow-earth: #8E7644;
+    -fx-white-off: #F9F8F3;
+    
+    /* Quitar el horrible brillo azul de JavaFX al hacer clic */
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    
+    -fx-font-family: "Roboto", sans-serif;
+    -fx-background-color: -fx-bg;
+}
+
+/* =========================================================
+   2. BARRAS DE DESPLAZAMIENTO (SCROLLBARS) MINIMALISTAS
+========================================================= */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+    -fx-pref-height: 8px;
+}
+.scroll-bar:vertical .track, .scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: rgba(198, 166, 100, 0.4); /* Amarillo arena transparente */
+    -fx-background-radius: 10px;
+}
+.scroll-bar:vertical .thumb:hover, .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #C6A664;
+}
+
+/* =========================================================
+   3. TIPOGRAFÍA Y TEXTOS
+========================================================= */
+.header-title {
+    -fx-font-family: "Montserrat", sans-serif;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A4A4A;
+}
+.section-subtitle {
+    -fx-font-family: "Montserrat", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A4A4A;
+}
+.user-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A4A4A;
+}
+
+/* =========================================================
+   4. SIDEBAR Y NAVEGACIÓN
+========================================================= */
+.sidebar {
+    -fx-background-color: #E5E0C8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 15, 0, 2, 0);
+}
+.nav-menu {
+    -fx-spacing: 8px;
+}
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4A4A4A;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 14px 20px;
+    -fx-background-radius: 12px;
+    -fx-cursor: hand;
+    /* Transición suave emulada */
+    -fx-border-color: transparent;
+}
+.nav-btn:hover {
+    -fx-background-color: rgba(198, 166, 100, 0.15); /* Hover sutil */
+    -fx-text-fill: #C6A664;
+}
+.nav-btn.active, .nav-btn:pressed {
+    -fx-background-color: #8E7644;
+    -fx-text-fill: #F9F8F3;
+    -fx-effect: dropshadow(gaussian, rgba(142, 118, 68, 0.4), 10, 0, 0, 4);
+}
+
+/* =========================================================
+   5. BOTONES PRINCIPALES
+========================================================= */
+.btn-primary {
+    -fx-background-color: #4A4A4A;
+    -fx-text-fill: #F9F8F3;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 12px 24px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(74, 74, 74, 0.3), 10, 0, 0, 4);
+}
+.btn-primary:hover {
+    -fx-background-color: #C6A664;
+    -fx-effect: dropshadow(gaussian, rgba(198, 166, 100, 0.4), 12, 0, 0, 5);
+}
+
+/* =========================================================
+   6. TARJETAS (CARDS) Y SOMBRAS MODERNAS
+========================================================= */
+.auth-card, .savings-card, .summary-card {
+    -fx-background-color: #F9F8F3;
+    -fx-background-radius: 20px;
+    /* Sombra estilo Apple/Stripe: muy difuminada y elegante */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 25, 0, 0, 8);
+}
+.summary-card {
+    -fx-padding: 25px 20px;
+}
+.card-balance { -fx-background-color: linear-gradient(to bottom right, #5c5c5c, #4A4A4A); }
+.card-gastos { -fx-background-color: linear-gradient(to bottom right, #D4B67A, #C6A664); }
+.card-proximo { -fx-background-color: linear-gradient(to bottom right, #A38B57, #8E7644); }
+
+.card-balance .label { -fx-text-fill: #F9F8F3; }
+.card-gastos .label { -fx-text-fill: #ffffff; }
+.card-proximo .label { -fx-text-fill: #F9F8F3; }
+
+.card-subtitle { 
+    -fx-font-size: 12px; 
+    -fx-opacity: 0.85; 
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+}
+.card-title { 
+    -fx-font-family: "Montserrat", sans-serif;
+    -fx-font-size: 28px; 
+    -fx-font-weight: bold; 
+}
+
+/* =========================================================
+   7. FORMULARIOS (INPUTS LIMPIOS Y MODERNOS)
+========================================================= */
+.form-control, .text-field, .password-field, .combo-box, .date-picker {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 12px 15px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #4A4A4A;
+}
+.form-control:focused, .text-field:focused, .password-field:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: #C6A664;
+    -fx-border-width: 2px;
+    -fx-background-color: #ffffff;
+    -fx-padding: 11px 14px; /* Ajuste para que el borde no mueva el texto */
+    -fx-effect: dropshadow(gaussian, rgba(198, 166, 100, 0.2), 10, 0, 0, 0);
+}
+
+/* =========================================================
+   8. TABLAS (ADIÓS AL ESTILO WINDOWS 98)
+========================================================= */
+.table-view {
+    -fx-background-color: #F9F8F3;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 15, 0, 0, 5);
+    -fx-padding: 5px;
+}
+.table-view .column-header-background {
+    -fx-background-color: #4A4A4A;
+    -fx-background-radius: 12px 12px 0 0;
+    -fx-padding: 8px 0;
+}
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-size: 45px;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #F9F8F3;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+}
+/* Filas de la tabla */
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: #EFEFEF;
+    -fx-border-width: 0 0 1px 0;
+    -fx-cell-size: 50px; /* Filas más altas y respirables */
+    -fx-text-fill: #4A4A4A;
+}
+.table-row-cell:odd {
+    -fx-background-color: #FCFCFA; /* Un color súper sutil para zebra-striping */
+}
+.table-row-cell:hover {
+    -fx-background-color: rgba(198, 166, 100, 0.08); /* Hover Amarillo Arena muy suave */
+}
+.table-row-cell:selected {
+    -fx-background-color: rgba(198, 166, 100, 0.2);
+    -fx-text-fill: #4A4A4A;
+}
+
+/* =========================================================
+   9. BARRA DE PROGRESO DE AHORRO
+========================================================= */
+.progress-bar-ahorro {
+    -fx-pref-height: 18px;
+}
+.progress-bar-ahorro .track {
+    -fx-background-color: #E0E0E0;
+    -fx-background-radius: 20px;
+    -fx-border-color: transparent;
+}
+.progress-bar-ahorro .bar {
+    -fx-background-color: linear-gradient(to right, #27AE60, #35BE45);
+    -fx-background-radius: 20px;
+    -fx-padding: 9px;
+}
+.percentage-badge {
+    -fx-background-color: #C6A664;
+    -fx-text-fill: white;
+    -fx-padding: 6px 18px;
+    -fx-background-radius: 20px;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(198, 166, 100, 0.4), 8, 0, 0, 3);
+}
+
+/* =========================================================
+   10. CHECKBOX
+========================================================= */
+.check-box .box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #C6A664;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+.check-box:selected .box {
+    -fx-background-color: #C6A664;
+}
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
