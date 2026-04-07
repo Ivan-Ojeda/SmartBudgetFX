@@ -16,8 +16,7 @@ public class Movimientos {
 	private int idCategoriaFK;
 	private LocalDate fechaMovimiento = LocalDate.now();
 	private String descripcion;
-	private int idUsuarioFK; // esta id se cogera de la sesion que este iniciada en el momento de la creacion
-								// del movimiento
+	private int idUsuarioFK; // esta id se cogera de la sesion que este iniciada en el momento de la creacion del movimiento
 
 	public int getIdMovimiento() {
 		return idMovimiento;

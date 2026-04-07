@@ -29,9 +29,10 @@ public class categoriasOpciones {
 		System.out.println("Introduzca el nombre de la categoría que desea crear:");// Pide el nombre.
 		String nombreCategoria = Inicio.sc.next();// Guarda el nombre.
 
-		boolean pedirMovimientoDeseado = true;// Se pide el tipo de movimiento hasta que sea alguna de las opciones
-												// correctas.
+		boolean pedirMovimientoDeseado = true;// Se pide el tipo de movimiento hasta que sea alguna de las opciones correctas.
 		boolean tipoMovimiento = true;
+		final int cantidadAhorro = 0; String cadaCuantoPago = "";
+		String descripcionAhorro = "";
 
 		do {
 			// Aqui pasaremos posiblemente a un desplegable o botones para selecciona gasto
@@ -47,9 +48,10 @@ public class categoriasOpciones {
 			} else {
 				System.out.println("No es una opcion valida");
 			}
+			
 		} while (pedirMovimientoDeseado);
 
-		Categorias c = new Categorias(nombreCategoria, tipoMovimiento, Inicio.idUsuarioActual, 0, "", "");// Se crea la nueva categoría.
+		Categorias c = new Categorias(nombreCategoria, tipoMovimiento, Inicio.idUsuarioActual, cantidadAhorro, descripcionAhorro, cadaCuantoPago);// Se crea la nueva categoría.
 //	public Categorias(String nombreCategoria, boolean tipoDeMovimiento, int idUsuarioFK, int cantidadAhorro, String descripcionAhorro, String cadaCuantoPago) {
 
 		Inicio.listaCategorias.add(c);// se guarda la nueva categoría en la lista de categorías.
