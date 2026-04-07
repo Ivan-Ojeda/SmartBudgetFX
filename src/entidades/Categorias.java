@@ -9,19 +9,9 @@ public class Categorias {
 	private int idUsuarioFK;
 	private String nombreCategoria;
 	private boolean tipoMovimiento; // gasto/ingreso
-	private int cantidadAhorro = 0; //
+	private int cantidadAhorro = 0;
 	private String descripcionAhorro = "";
 	private String frecuenciaPago = "";
-
-	private String tipoDeMovimientoParaLaCategoria;
-
-	public String getTipoDeMovimientoParaLaCategoria() {
-		return tipoDeMovimientoParaLaCategoria;
-	}
-
-	public void setTipoDeMovimientoParaLaCategoria(String tipoDeMovimientoParaLaCategoria) {
-		this.tipoDeMovimientoParaLaCategoria = tipoDeMovimientoParaLaCategoria;
-	}
 
 	public int getIdCategoria() {
 		return idCategoria;
@@ -93,21 +83,28 @@ public class Categorias {
 	 */
 	public Categorias(String nombreCategoria, boolean tipoDeMovimiento, int idUsuarioFK, int cantidadAhorro,
 			String descripcionAhorro, String cadaCuantoPago) {
-		super();
 		this.idCategoria = crearIdCategoria();
 		this.nombreCategoria = nombreCategoria;
 		this.tipoMovimiento = tipoDeMovimiento;
 		this.idUsuarioFK = idUsuarioFK;
 		this.cantidadAhorro = cantidadAhorro;
 		this.descripcionAhorro = descripcionAhorro;
-		this.frecuenciaPago = frecuenciaPago;
-		this.tipoDeMovimientoParaLaCategoria = tipoDeMovimientoParaLaCategoria;
+		this.frecuenciaPago = cadaCuantoPago;
 	}
 
 	@Override
 	public String toString() {
-		return "Categorias [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
-				+ ", tipoDeMovimientoParaLaCategoria=" + tipoDeMovimientoParaLaCategoria + "]";
+		
+		String mv = "";
+		
+		if(this.tipoMovimiento == false) {
+			mv = "Gasto";
+		}
+		else {
+			mv = "Ingreso";
+		}
+		return "Categorias: Id de la categoría=" + idCategoria + ", nombre de la categoría: " + nombreCategoria
+				+ ", tipo de movimiento: " + mv + "]";
 	}
 
 	/**
@@ -124,11 +121,12 @@ public class Categorias {
 		}
 
 		// Ordenar la lista por id (de menor a mayor)
-		lcg.sort(Comparator.comparingInt(Categorias::getIdCategoria));
+		ArrayList<Categorias> copia = new ArrayList<>(lcg);
+		copia.sort(Comparator.comparingInt(Categorias::getIdCategoria));
 
 		int esperado = 1;
 
-		for (Categorias obj : lcg) {
+		for (Categorias obj : copia) {
 			if (obj.getIdCategoria() != esperado) {
 				// Encontramos un hueco --> devolvemos ese ID
 				return esperado;

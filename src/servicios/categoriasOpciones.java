@@ -26,8 +26,9 @@ public class categoriasOpciones {
 	 */
 	public void crearCategoria() {
 
+		Inicio.sc.nextLine();
 		System.out.println("Introduzca el nombre de la categoría que desea crear:");// Pide el nombre.
-		String nombreCategoria = Inicio.sc.next();// Guarda el nombre.
+		String nombreCategoria = Inicio.sc.nextLine();// Guarda el nombre.
 
 		boolean pedirMovimientoDeseado = true;// Se pide el tipo de movimiento hasta que sea alguna de las opciones correctas.
 		boolean tipoMovimiento = true;
@@ -38,7 +39,8 @@ public class categoriasOpciones {
 			// Aqui pasaremos posiblemente a un desplegable o botones para selecciona gasto
 			// o ingreso
 			System.out.println("Introduzca el tipo de movimiento que va a tener esta categoría (Ingreso/Gasto): ");
-			String tipoDeMovimiento = Inicio.sc.next(); // transformamos en lowerCase el valor dado
+			String tipoDeMovimiento = Inicio.sc.nextLine(); // transformamos en lowerCase el valor dado
+			
 			if (tipoDeMovimiento.toLowerCase().equals("gasto")) {
 				tipoMovimiento = false;
 				pedirMovimientoDeseado = false;
@@ -65,21 +67,18 @@ public class categoriasOpciones {
 	 */
 	// Este metodo y el toString de Categorias hay que modificarlo cuando se sepa la
 	// estructura de listarCategorias
-	public void mostrarCategorias() {
-		for (Categorias ct : Inicio.listaCategorias) {// Se recorre la lista de categorías.
-			for (Movimientos mv : Inicio.listaMovimientos) {// Se recorre la lista de movimientos.
-				if (ct.isTipoMovimiento() == true) { // Comprueba si el tipo de movimientos de ambos es de ingresos y
-														// después los muetra.
-					System.out.println(ct.toString());
-					break;
-				}
-				if (ct.isTipoMovimiento() == false) {// Comprueba si el tipo de movimientos de ambos es de gastos y
-														// después los muetra.
-					System.out.println(ct.toString());
-					break;
-				}
-			}
-		}
+    public void mostrarCategorias() {
+        for (Categorias ct : Inicio.listaCategorias) {
+            boolean tieneMovimiento = false;
+            for (Movimientos mv : Inicio.listaMovimientos) {
+                if (ct.getIdCategoria() == mv.getCategoriaFK()) {
+                    tieneMovimiento = true;
+                    break; // evita repetir la misma categoría
+	            }
+	        }
+            String tipo = ct.isTipoMovimiento() ? "[INGRESO]" : "[GASTO]";
+            	System.out.println(tipo + " " + ct + (tieneMovimiento ? "" : " (sin movimientos)"));
+	    }
 	}
 	
 	/***
@@ -214,6 +213,3 @@ public class categoriasOpciones {
 	
 	
 }
-
-
-
