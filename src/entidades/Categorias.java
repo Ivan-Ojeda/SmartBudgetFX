@@ -13,6 +13,16 @@ public class Categorias {
 	private String descripcionAhorro = "";
 	private String frecuenciaPago = "";
 
+	private String tipoDeMovimientoParaLaCategoria;
+
+	public String getTipoDeMovimientoParaLaCategoria() {
+		return tipoDeMovimientoParaLaCategoria;
+	}
+
+	public void setTipoDeMovimientoParaLaCategoria(String tipoDeMovimientoParaLaCategoria) {
+		this.tipoDeMovimientoParaLaCategoria = tipoDeMovimientoParaLaCategoria;
+	}
+
 	public int getIdCategoria() {
 		return idCategoria;
 	}
@@ -69,12 +79,7 @@ public class Categorias {
 		this.frecuenciaPago = frecuenciaPago;
 	}
 
-	// Este metodo y el mostrarCategorias() de categoriasOpciones hay que
-	// modificarlo cuando se sepa la estructura de listarCategorias
-	@Override
-	public String toString() {
-		return "Categorias []";
-	}
+	
 
 	/**
 	 * Constructor al que le pasamos valores para crear el nuevo objeto Categorias
@@ -88,7 +93,6 @@ public class Categorias {
 	 */
 	public Categorias(String nombreCategoria, boolean tipoDeMovimiento, int idUsuarioFK, int cantidadAhorro,
 			String descripcionAhorro, String cadaCuantoPago) {
-
 		super();
 		this.idCategoria = crearIdCategoria();
 		this.nombreCategoria = nombreCategoria;
@@ -97,6 +101,13 @@ public class Categorias {
 		this.cantidadAhorro = cantidadAhorro;
 		this.descripcionAhorro = descripcionAhorro;
 		this.frecuenciaPago = frecuenciaPago;
+		this.tipoDeMovimientoParaLaCategoria = tipoDeMovimientoParaLaCategoria;
+	}
+
+	@Override
+	public String toString() {
+		return "Categorias [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
+				+ ", tipoDeMovimientoParaLaCategoria=" + tipoDeMovimientoParaLaCategoria + "]";
 	}
 
 	/**
