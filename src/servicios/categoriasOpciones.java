@@ -211,5 +211,21 @@ public class categoriasOpciones {
         }
     }
 	
-	
+    public void eliminarCategoria(int idCategoria) {
+        boolean tieneMovimiento = false;
+
+        for (Movimientos mv : Inicio.listaMovimientos) {
+            if (mv.getCategoriaFK() == idCategoria) {
+                tieneMovimiento = true;
+                break;
+            }
+        }
+
+        if (tieneMovimiento) {
+            System.out.println("❌ No se puede eliminar, tiene movimientos.");
+        } else {
+            Inicio.listaCategorias.removeIf(c -> c.getIdCategoria() == idCategoria);
+            System.out.println("✅ Categoría eliminada.");
+        }
+    }
 }
