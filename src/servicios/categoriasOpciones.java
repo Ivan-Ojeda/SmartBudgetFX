@@ -1,12 +1,19 @@
 package servicios;
 
-import controladores.Inicio;
-import entidades.Categorias;
-import entidades.Movimientos;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import controladores.Inicio;
+import entidades.Categorias;
+import entidades.Movimientos;
+import entidades.Usuarios;
 
 /**
  * Clase que gestiona las operaciones relacionadas con las categorías. Permite
@@ -67,17 +74,58 @@ public class categoriasOpciones {
 	 */
 	// Este metodo y el toString de Categorias hay que modificarlo cuando se sepa la
 	// estructura de listarCategorias
-    public void mostrarCategorias() {
-        for (Categorias ct : Inicio.listaCategorias) {
-            boolean tieneMovimiento = false;
-            for (Movimientos mv : Inicio.listaMovimientos) {
-                if (ct.getIdCategoria() == mv.getCategoriaFK()) {
-                    tieneMovimiento = true;
-                    break; // evita repetir la misma categoría
+	public void mostrarCategorias() {
+	    usuariosOpciones uo = new usuariosOpciones();
+	    boolean esAdmin = uo.esAdmin();
+	    int idFiltrar = Inicio.idUsuarioActual; // por defecto, usuario normal ve solo sus categorías
+
+	    // Si es admin, permite filtrar por usuario o todos
+	    if (esAdmin) {
+	        System.out.println("Usuarios disponibles:");
+	        uo.listarUsuarios();
+
+	        boolean idValido = false;
+	        do {
+	            System.out.println("Introduce el ID del usuario (-1 para todos): ");
+	            String input = Inicio.sc.nextLine();
+	            try {
+	                idFiltrar = Integer.parseInt(input);
+	                if (idFiltrar == -1) {
+	                    idValido = true; // Todos los usuarios
+	                } else {
+	                    // Verificar que el ID existe
+	                    for (Usuarios u : Inicio.listaUsuarios) {
+	                        if (u.getIdUsuario() == idFiltrar) {
+	                            idValido = true;
+	                            break;
+	                        }
+	                    }
+	                    if (!idValido) {
+	                        System.out.println("❌ ID no válido. Intenta de nuevo.");
+	                    }
+	                }
+	            } catch (NumberFormatException e) {
+	                System.out.println("❌ Introduce un número válido.");
+	            }
+	        } while (!idValido);
+	    }
+
+	    // Mostrar categorías según el filtro
+	    for (Categorias ct : Inicio.listaCategorias) {
+	        if (idFiltrar != -1 && ct.getIdUsuarioFK() != idFiltrar) {
+	            continue; // Saltar categorías de otros usuarios
+	        }
+
+	        boolean tieneMovimiento = false;
+	        for (Movimientos mv : Inicio.listaMovimientos) {
+	            if (ct.getIdCategoria() == mv.getCategoriaFK()) {
+	                tieneMovimiento = true;
+	                break;
 	            }
 	        }
-            String tipo = ct.isTipoMovimiento() ? "[INGRESO]" : "[GASTO]";
-            	System.out.println(tipo + " " + ct + (tieneMovimiento ? "" : " (sin movimientos)"));
+
+	        String tipo = ct.isTipoMovimiento() ? "[INGRESO]" : "[GASTO]";
+	        System.out.println(tipo + " " + ct + (tieneMovimiento ? "" : " (sin movimientos)"));
 	    }
 	}
 	

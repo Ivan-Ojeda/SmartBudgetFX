@@ -51,6 +51,10 @@ public class Usuarios {
 		this.rol = rol;
 	}
 
+	public boolean esAdmin() {
+	    return this.rol.equalsIgnoreCase("ADMIN");
+	}
+	
 	/**
 	 * Método que creará la id en funcion de si ya existe en la lista
 	 * 
