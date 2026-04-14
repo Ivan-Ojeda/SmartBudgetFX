@@ -77,6 +77,8 @@ public class Movimientos {
 		this.idUsuarioFK = idUsuarioFK;
 	}
 
+	
+
 	/**
 	 * Método que creará la id en funcion de si ya existe en la lista
 	 * 

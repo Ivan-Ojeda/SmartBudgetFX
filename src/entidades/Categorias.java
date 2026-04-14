@@ -11,17 +11,8 @@ public class Categorias {
 	private boolean tipoMovimiento; // gasto/ingreso
 	private int cantidadAhorro = 0; //
 	private String descripcionAhorro = "";
-	private String frecuenciaPago = "";
+	private String frecuenciaPago = "categoriaNoAhorro";
 
-	private String tipoDeMovimientoParaLaCategoria;
-
-	public String getTipoDeMovimientoParaLaCategoria() {
-		return tipoDeMovimientoParaLaCategoria;
-	}
-
-	public void setTipoDeMovimientoParaLaCategoria(String tipoDeMovimientoParaLaCategoria) {
-		this.tipoDeMovimientoParaLaCategoria = tipoDeMovimientoParaLaCategoria;
-	}
 
 	public int getIdCategoria() {
 		return idCategoria;
@@ -89,10 +80,10 @@ public class Categorias {
 	 * @param idUsuarioFK
 	 * @param cantidadAhorro
 	 * @param descripcionAhorro
-	 * @param cadaCuantoPago
+	 * @param frecuenciaPago
 	 */
 	public Categorias(String nombreCategoria, boolean tipoDeMovimiento, int idUsuarioFK, int cantidadAhorro,
-			String descripcionAhorro, String cadaCuantoPago) {
+			String descripcionAhorro, String frecuenciaPago) {
 		super();
 		this.idCategoria = crearIdCategoria();
 		this.nombreCategoria = nombreCategoria;
@@ -101,13 +92,11 @@ public class Categorias {
 		this.cantidadAhorro = cantidadAhorro;
 		this.descripcionAhorro = descripcionAhorro;
 		this.frecuenciaPago = frecuenciaPago;
-		this.tipoDeMovimientoParaLaCategoria = tipoDeMovimientoParaLaCategoria;
 	}
 
 	@Override
 	public String toString() {
-		return "Categorias [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
-				+ ", tipoDeMovimientoParaLaCategoria=" + tipoDeMovimientoParaLaCategoria + "]";
+		return "Categorias [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + "]";
 	}
 
 	/**
@@ -124,11 +113,12 @@ public class Categorias {
 		}
 
 		// Ordenar la lista por id (de menor a mayor)
-		lcg.sort(Comparator.comparingInt(Categorias::getIdCategoria));
+		ArrayList<Categorias> copia = new ArrayList<>(lcg);
+		copia.sort(Comparator.comparingInt(Categorias::getIdCategoria));
 
 		int esperado = 1;
 
-		for (Categorias obj : lcg) {
+		for (Categorias obj : copia) {
 			if (obj.getIdCategoria() != esperado) {
 				// Encontramos un hueco --> devolvemos ese ID
 				return esperado;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      stylesheets="@style.css"
+      fx:controller="application.AhorroController"
+      spacing="10"
+      alignment="CENTER">
+
+    <TextField fx:id="txtNombreCategoria"
+               promptText="Nombre del objetivo" />
+
+    <TextField fx:id="txtCantidadAhorro"
+               promptText="Cantidad de ahorro" />
+
+    <TextField fx:id="txtDescripcionAhorro"
+               promptText="Descripción" />
+
+    <ComboBox fx:id="comboFrecuenciaPago"
+              promptText="Frecuencia de pago" />
+
+    <Button text="Guardar objetivo" styleClass="btn-primary"
+            onAction="#anadirObjetivo" />
+
+</VBox>
