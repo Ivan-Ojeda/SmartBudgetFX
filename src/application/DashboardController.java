@@ -121,6 +121,7 @@ public class DashboardController {
 		if (controladores.Inicio.listaMovimientos != null) {
 			listaMovimientos.addAll(controladores.Inicio.listaMovimientos);
 		}
+		servicios.AhorroImplementacion.cargarCategoriasDesdeFichero();
 		configurarModuloMovimientos();
 		configurarTablaAhorros();
 		cargarTablaAhorros();

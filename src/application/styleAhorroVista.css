@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap');
+
+/* =========================================================
+   VARIABLES DE MARCA (Manual de Estilo)
+========================================================= */
+.root {
+    -fx-bg-beige: #EDE8D0;      /* Fondo Principal  */
+    -fx-gris-grafito: #4A4A4A;  /* Color de Marca  */
+    -fx-amarillo-arena: #C6A664;/* Color de Acción  */
+    -fx-tierra-sombra: #8E7644; /* Estado Activo  */
+    -fx-blanco-roto: #F9F8F3;   /* Fondo de tarjetas de ahorro [cite: 57] */
+    
+    -fx-font-family: "Roboto";  /* Tipografía secundaria [cite: 9] */
+}
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+========================================================= */
+.main-container {
+    -fx-background-color: -fx-bg-beige; /* Fondo Beige Arena  */
+}
+
+/* =========================================================
+   TIPOGRAFÍA
+========================================================= */
+.titulo-ahorro {
+    -fx-font-family: "Montserrat";
+    -fx-font-weight: bold;      /* Peso: 700 [cite: 8] */
+    -fx-font-size: 24px;
+    -fx-text-fill: -fx-gris-grafito;
+}
+
+.label-formulario {
+    -fx-font-family: "Roboto";
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-gris-grafito; /* Gris Grafito para textos [cite: 62] */
+}
+
+/* =========================================================
+   COMPONENTES DE ENTRADA (TextField y ComboBox)
+========================================================= */
+.text-field, .combo-box {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #E0E0E0;
+    -fx-padding: 10px;
+    -fx-font-family: "Roboto";
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: -fx-amarillo-arena; /* Resaltado en Amarillo Arena  */
+    -fx-border-width: 2px;
+}
+
+/* =========================================================
+   BOTÓN DE ACCIÓN (Guardar)
+========================================================= */
+.btn-guardar {
+    -fx-background-color: -fx-gris-grafito; /* Estado Reposo: Gris #4A4A4A [cite: 13] */
+    -fx-text-fill: -fx-bg-beige;            /* Texto en Beige [cite: 13] */
+    -fx-font-family: "Montserrat";
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 12px;           /* Bordes redondeados 12px [cite: 12, 35] */
+    -fx-padding: 12px 25px;
+    -fx-cursor: hand;                       /* Cursor tipo pointer [cite: 15] */
+}
+
+.btn-guardar:hover {
+    -fx-background-color: -fx-amarillo-arena; /* Estado Hover: Amarillo Arena [cite: 14, 37] */
+    -fx-text-fill: -fx-bg-beige;
+}
+
+/* =========================================================
+   ESTILOS ESPECÍFICOS DE AHORRO (Sección 5 del Manual)
+========================================================= */
+.card-ahorro-detalle {
+    -fx-background-color: -fx-blanco-roto; /* Fondo blanco roto #F9F8F3 [cite: 57] */
+    -fx-background-radius: 20px;           /* Bordes redondeados de 20px [cite: 57] */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 4);
+}
+
+.progress-bar {
+    -fx-pref-height: 15px;
+}
+
+.progress-bar .track {
+    -fx-background-color: #E0E0E0;         /* Fondo gris claro neutro [cite: 58] */
+    -fx-background-radius: 20px;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #27AE60;         /* Relleno Verde salud financiera [cite: 59] */
+    -fx-background-radius: 20px;
+}
+
+.percentage-badge {
+    -fx-background-color: -fx-amarillo-arena; /* Óvalo Amarillo Arena [cite: 61] */
+    -fx-text-fill: white;                      /* Texto en blanco [cite: 61] */
+    -fx-padding: 5px 15px;
+    -fx-background-radius: 20px;
+    -fx-font-weight: bold;
+}
