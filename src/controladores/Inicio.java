@@ -22,5 +22,8 @@ public class Inicio {
 		MenuPrincipal mp = new MenuPrincipal();
 			mp.usarMenu();
 				sc.close();
+				for (Categorias patata : listaCategorias) {
+					System.out.print(patata.toString());
+				}
 	}
 }

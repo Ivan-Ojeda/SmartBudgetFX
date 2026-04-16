@@ -11,7 +11,8 @@ public class Categorias {
 	private boolean tipoMovimiento; // gasto/ingreso
 	private int cantidadAhorro = 0;
 	private String descripcionAhorro = "";
-	private String frecuenciaPago = "";
+	private String frecuenciaPago = "categoriaNoAhorro";
+
 
 	public int getIdCategoria() {
 		return idCategoria;
@@ -79,17 +80,17 @@ public class Categorias {
 	 * @param idUsuarioFK
 	 * @param cantidadAhorro
 	 * @param descripcionAhorro
-	 * @param cadaCuantoPago
+	 * @param frecuenciaPago
 	 */
 	public Categorias(String nombreCategoria, boolean tipoDeMovimiento, int idUsuarioFK, int cantidadAhorro,
-			String descripcionAhorro, String cadaCuantoPago) {
+			String descripcionAhorro, String frecuenciaPago) {
 		this.idCategoria = crearIdCategoria();
 		this.nombreCategoria = nombreCategoria;
 		this.tipoMovimiento = tipoDeMovimiento;
 		this.idUsuarioFK = idUsuarioFK;
 		this.cantidadAhorro = cantidadAhorro;
 		this.descripcionAhorro = descripcionAhorro;
-		this.frecuenciaPago = cadaCuantoPago;
+		this.frecuenciaPago = frecuenciaPago;
 	}
 
 	@Override
