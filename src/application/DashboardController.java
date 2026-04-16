@@ -1,5 +1,6 @@
 package application;
 
+import entidades.Categorias;
 import entidades.Movimientos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import javafx.fxml.FXMLLoader;
@@ -86,6 +88,30 @@ public class DashboardController {
 	private int idUsuarioActivo = 2; // 1 = Admin, 2 = Miembro
 
 	@FXML
+	private TableView<Categorias> tablaAhorros;
+
+	@FXML
+	private TableColumn<Categorias, Integer> colIdCategoria;
+
+	@FXML
+	private TableColumn<Categorias, String> colNombreCategoria;
+
+	@FXML
+	private TableColumn<Categorias, Boolean> colTipoMovimiento;
+
+	@FXML
+	private TableColumn<Categorias, String> colFrecuenciaPago;
+
+	@FXML
+	private TableColumn<Categorias, Double> colCantidadAhorro;
+
+	@FXML
+	private TableColumn<Categorias, String> colDescripcionAhorro;
+
+	@FXML
+	private TableColumn<Categorias, Integer> colIdUsuario;
+
+	@FXML
 	public void initialize() {
 		authView.setVisible(true);
 		dashboardView.setVisible(false);
@@ -96,41 +122,58 @@ public class DashboardController {
 			listaMovimientos.addAll(controladores.Inicio.listaMovimientos);
 		}
 		configurarModuloMovimientos();
+		configurarTablaAhorros();
+		cargarTablaAhorros();
 	}
-	
+
 	@FXML
 	private void abrirVistaAhorro() {
-
 	    try {
-
-	        FXMLLoader loader = new FXMLLoader(
-	                getClass().getResource("secAhorroVista.fxml")
-	        );
-
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("secAhorroVista.fxml"));
 	        Parent root = loader.load();
-
 	        Stage stage = new Stage();
-
 	        stage.setTitle("Nuevo objetivo de ahorro");
-
 	        stage.setScene(new Scene(root));
-
 	        stage.initModality(Modality.APPLICATION_MODAL);
-
 	        stage.setResizable(false);
-
 	        stage.centerOnScreen();
 
-	        stage.showAndWait();
+	        // 1. CAMBIA stage.show() por stage.showAndWait()
+	        stage.showAndWait(); 
+
+	        // 2. AÑADE ESTO justo debajo. Cuando la ventana se cierre, esto recargará la tabla.
+	        cargarTablaAhorros(); 
 
 	    } catch (Exception e) {
-
 	        e.printStackTrace();
-
 	    }
+	}
 
-	}	
-	
+	private void configurarTablaAhorros() {
+
+		colIdCategoria.setCellValueFactory(new PropertyValueFactory<>("idCategoria"));
+
+		colNombreCategoria.setCellValueFactory(new PropertyValueFactory<>("nombreCategoria"));
+
+		colTipoMovimiento.setCellValueFactory(new PropertyValueFactory<>("tipoMovimiento"));
+
+		colFrecuenciaPago.setCellValueFactory(new PropertyValueFactory<>("frecuenciaPago"));
+
+		colCantidadAhorro.setCellValueFactory(new PropertyValueFactory<>("cantidadAhorro"));
+
+		colDescripcionAhorro.setCellValueFactory(new PropertyValueFactory<>("descripcionAhorro"));
+
+		colIdUsuario.setCellValueFactory(new PropertyValueFactory<>("idUsuarioFK"));
+
+	}
+
+	private void cargarTablaAhorros() {
+
+		ArrayList<Categorias> lista = servicios.AhorroImplementacion.obtenerAhorros();
+
+		tablaAhorros.getItems().setAll(lista);
+
+	}
 
 	private void configurarModuloMovimientos() {
 		colFecha.setCellValueFactory(new PropertyValueFactory<>("fechaMovimiento"));

@@ -280,6 +280,7 @@
 							styleClass="main-content" visible="true">		<!-- /secAhorro/ -->
 							<content>
 								<VBox spacing="25.0">
+
 									<VBox alignment="CENTER"
 										style="-fx-background-color: #8E7644; -fx-background-radius: 16; -fx-padding: 30;">
 										<children>
@@ -319,7 +320,35 @@
 											<Label text="Meta: 20.000 €" />
 										</HBox>
 									</VBox>
+									<VBox>
+										<HBox>
+											<TableView fx:id="tablaAhorros">
+												<columns>
+													<TableColumn fx:id="colIdCategoria" text="ID" />
+
+													<TableColumn fx:id="colNombreCategoria"
+														text="Nombre" />
+
+													<TableColumn fx:id="colTipoMovimiento"
+														text="Tipo Movimiento" />
+
+													<TableColumn fx:id="colFrecuenciaPago"
+														text="Frecuencia" />
+
+													<TableColumn fx:id="colCantidadAhorro"
+														text="Cantidad" />
+
+													<TableColumn fx:id="colDescripcionAhorro"
+														text="Descripción" />
+
+													<TableColumn fx:id="colIdUsuario"
+														text="Usuario" />
+												</columns>
+											</TableView>
+										</HBox>
+									</VBox>
 								</VBox>
+
 							</content>
 						</ScrollPane>
 
@@ -363,7 +392,7 @@
 							</content>
 						</ScrollPane>
 
-						<ScrollPane fx:id="secConfig" fitToWidth="true" 
+						<ScrollPane fx:id="secConfig" fitToWidth="true"
 							styleClass="main-content" visible="false">		<!-- /secConfig/ -->
 							<content>
 								<VBox styleClass="savings-card">

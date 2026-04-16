@@ -40,12 +40,9 @@ public class AhorroController {
 			String frecuenciaPago = comboFrecuenciaPago.getValue();
 
 			int cantidadAhorro = Integer.parseInt(txtCantidadAhorro.getText());
-			
-			entidades.Categorias cA = new Categorias(nombreCategoria, false, cantidadAhorro, cantidadAhorro, descripcionAhorro, frecuenciaPago);
-			
+
 			servicio.crearAhorro(frecuenciaPago, nombreCategoria, cantidadAhorro, descripcionAhorro);
 			
-			 System.out.println(cA.toString());
 			limpiarCampos();
 			cerrarVentana(); // no todos los cambios realizados, solo cerrarVentana
 

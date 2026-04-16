@@ -1,5 +1,7 @@
 package servicios;
 
+import java.util.ArrayList;
+
 import controladores.Inicio;
 import entidades.Categorias;
 
@@ -40,4 +42,27 @@ public class AhorroImplementacion {
         Inicio.listaCategorias.add(nuevaCategoria);
     }
 
+    public static ArrayList<Categorias> obtenerAhorros() {
+
+        ArrayList<Categorias> listaAhorros =
+                new ArrayList<>();
+
+        for (Categorias c : Inicio.listaCategorias) {
+
+            if (!c.getFrecuenciaPago()
+                    .equals("categoriaNoAhorro")) {
+
+                listaAhorros.add(c);
+
+            }
+
+        }
+
+        return listaAhorros;
+
+    }
+    
+    
+    
+    
 }
