@@ -63,6 +63,8 @@ public class categoriasOpciones {
 	 * las categorías que coinciden con el tipo de movimiento de algún movimiento
 	 * registrado.
 	 */
+	
+	
 	// Este metodo y el toString de Categorias hay que modificarlo cuando se sepa la
 	// estructura de listarCategorias
 	public void mostrarCategorias() {
